@@ -12,10 +12,8 @@
 
 5. Run `$ vagrant ssh` in the manoa-meals directory
 
-6. Run `$ gem install rails --no-rdoc --no-ri`
+6. Run `$ bundle install`
 
-7. Run `$ bundle install`
+7. Run `$ rake db:create` to create the database, the default username and password is "vagrant".
 
-8. Run `$ rake db:create` to create the database, the default username and password is "vagrant".
-
-6. Navigate to 192.168.10.10 in your web browser and ensure everything is working properly. 
+8. Navigate to 192.168.10.10 in your web browser and ensure everything is working properly. 
