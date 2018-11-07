@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   get '/home', to: 'static_pages#home'
   get '/about', to: 'static_pages#about'
-  get 'user/new', as: 'new_user'
+  get '/signup', to: 'users#new', as: 'new_user'
+  post '/signup', to: 'users#create'
+  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
