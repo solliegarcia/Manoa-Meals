@@ -4,4 +4,5 @@ class User < ApplicationRecord
                        uniqueness: true
 
   has_many :meal_plans
+  serialize :meal_plans
 end
