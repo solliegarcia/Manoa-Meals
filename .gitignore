@@ -30,3 +30,4 @@
 # Ignore vagrant
 .vagrant/
 
+app/.DS_Store
