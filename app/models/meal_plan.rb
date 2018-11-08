@@ -1,5 +1,7 @@
 class MealPlan < ApplicationRecord
-  has_one :user
+  belongs_to :user
   has_many :dishes
+
+  serialize :list_of_dishes
 
 end
