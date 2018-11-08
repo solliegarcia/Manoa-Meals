@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user_path(user)
     else
+      flash[:danger] = "Error Logging In"
       render 'new'
     end
   end

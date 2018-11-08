@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'meal_plans/new'
+  get 'meal_plans/edit'
   get 'sessions/new'
   root 'static_pages#home'
   

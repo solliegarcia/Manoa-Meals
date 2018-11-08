@@ -3,7 +3,9 @@
     <%= link_to "Manoa Meals", home_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Create A Plan", '#' %></li>
+        <% if logged_in? %>
+          <li><%= link_to "Create A Plan", meal_plans_new_path %></li>
+        <% end %>
         <li><%= link_to "About", about_path %></li>
         <% if logged_in? %>
           <li class="dropdown">
