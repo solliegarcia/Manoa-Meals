@@ -30,7 +30,9 @@ Rails.application.configure do
   end
 
   config.serve_static_assets = false
-  
+
+  config.reload_classes_only_on_change = false
+
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 
