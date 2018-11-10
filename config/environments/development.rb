@@ -9,6 +9,8 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.web_console.whitelisted_ips = '192.168.10.1'
+
   # Show full error reports.
   config.consider_all_requests_local = true
 
@@ -26,6 +28,10 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+
+  config.serve_static_assets = false
+
+  config.reload_classes_only_on_change = false
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
