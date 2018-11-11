@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
   get 'meal_plans/new'
+  post 'meal_plans/create'
   get 'meal_plans/edit'
-
+  get 'meal_plans/show'
   get 'sessions/new'
   root 'static_pages#home'
   
