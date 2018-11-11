@@ -1,1 +1,16 @@
-<h1>Username</h2><%= @user.username %>, <%= @user.email_address %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @user.username %>
+      </h1>
+      <p><%= @user.first_name %> <%= @user.last_name %>
+    </section>
+  </aside>
+  <aside class="col-md-8">
+
+    <h1 style="text-decoration: underline;">Your Meal Plans</h1>
+    <p class="center"><a href="#">Meal Plan 1</a></p>
+    
+  </aside>
+</div>
