@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_08_172224) do
+ActiveRecord::Schema.define(version: 2018_11_11_032137) do
 
   create_table "dishes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -29,7 +29,8 @@ ActiveRecord::Schema.define(version: 2018_11_08_172224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "list_of_dishes"
-    t.string "restrictions"
+    t.string "name"
+    t.integer "user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

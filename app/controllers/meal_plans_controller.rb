@@ -5,6 +5,20 @@ class MealPlansController < ApplicationController
     @dishes = Dish.all # will be by weekly once week is implemented
   end
 
+  def create
+    logger.debug("Hitting MealPlans#create")
+    @meal_plan = MealPlan.new(meal_plan_params)
+    if @meal_plan.save
+      
+    end
+  end
+
   def edit
   end
+
+  private
+
+    def meal_plan_params
+      params.require(:meal_plan).permit(:list_of_dishes, :name)
+    end
 end

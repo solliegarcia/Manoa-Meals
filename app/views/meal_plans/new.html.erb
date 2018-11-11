@@ -1,12 +1,46 @@
-<h1>MealPlans#new</h1>
-<p>Find me in app/views/meal_plans/new.html.erb</p>
-<%= @user.inspect %>
-<%= @meal_plan.inspect %>
+<div class="jumbotron">
+  <h1>New Meal Plan</h1>
+</div>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@meal_plan) do |f| %>
-      <%=
+  <div class="col-md-6 jumbotron">
+    <h1>Restrictions</h1>
+    <p>Work in Progress</p>
+
+  </div>
+  <div class="col-md-4 jumbotron">
+    <h1>Nutrition</h1>
+    <div class="nutr-calories">
+      <span id="nutr-odo" class="odometer">0</span>
+      <span class="nutr-label">Calories</span>
+    </div>
+    <div class="nutr-fat">
+      <span id="nutr-odo" class="odometer">0</span>
+      <span class="nutr-label">Total Fat</span>
+    </div>
+    <div class="nutr-carbs">
+      <span id="nutr-odo" class="odometer">0</span>
+      <span class="nutr-label">Carbs</span>
+    </div>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 jumbotron">
+    <%= form_for(@meal_plan, url: meal_plans_create_path) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+
 
     <% end %>
   </div>
 </div>  
+
+
+<script>
+  console.log("Test");
+  $("#btn").on('click', function() {
+    $("nutr-odo").text("10");
+  });
+</script>
