@@ -1,3 +1,80 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    background-color: white;
+    background-image: url("backg.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+h1 {
+    color: black;
+    text-align: center;
+}
+
+h2 { color: black; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0 0 24px; }
+
+h3 { color: #685206; font-family: 'Helvetica Neue', sans-serif; font-size: 20px; line-height: 24px; margin: 0 0 24px; text-align: justify; text-justify: inter-word; text-align: center; }
+
+p { color: black; font-family: 'Raleway',sans-serif; font-size: 18px; font-weight: 500; line-height: 32px; margin: 0 0 24px; text-align: center; }
+
+.img-circle {
+    display: block;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+ 
+.img-manoa {
+	height: 200px;
+    width: 200px;
+}
+
+.center {
+    display: block;
+    height: 100px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.center2 {
+    display: block;
+    height: 500px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.center3 {
+    display: block;
+    height: 80px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+/* Hero image (for future use) */
+.hero-image {
+    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("wood.jpeg");
+
+    height: 50%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+
+
+
