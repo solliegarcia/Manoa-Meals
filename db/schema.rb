@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 2018_11_11_045858) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "list_of_dishes"
-    t.string "name"
+    t.string "restrictions"
     t.integer "user_id"
+    t.string "name"
     t.string "course"
     t.datetime "date"
     t.string "location"
