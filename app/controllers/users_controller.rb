@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in(@user)
       flash[:success] = "Welcome to Manoa Meals"
       redirect_to user_path(@user)
     else
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    
   end
 
   private

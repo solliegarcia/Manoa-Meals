@@ -8,12 +8,20 @@
 
 3. `$ git clone https://github.com/solliegarcia/Manoa-Meals.git manoa-meals`
 
-4. Run `$ vagrant up` in the manoa-meals directory to start the vagrant box and to begin provisioning (this will take a while).
+4. Run `$ cd manoa-meals`
 
-5. Run `$ vagrant ssh` in the manoa-meals directory
+5. Run `$ vagrant up` in the directory to start the vagrant box and to begin provisioning (this will take a while).
 
-6. Run `$ bundle install`
+6. Run `$ vagrant ssh` in the manoa-meals directory in a new terminal window
 
-7. Run `$ rake db:create` to create the database, the default username and password is "vagrant".
+7. Run `$ bundle install` to install required ruby gems
 
-8. Navigate to 192.168.10.10 in your web browser and ensure everything is working properly. 
+8. Run `$ exit` to exit vagrant directory to allow reload
+
+9. Run `$ vagrant reload` to restart vagrant box
+
+10. Run `$ vagrant ssh` in order to run commands in the vagrant box
+
+11. Run `$ rake db:setup` to create and fill the database, note- the default username and password is "vagrant".
+
+12. Navigate to 192.168.10.10 in your web browser and ensure everything is working properly. 
