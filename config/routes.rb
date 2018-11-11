@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'meal_plans/new'
   get 'meal_plans/edit'
+
   get 'sessions/new'
   root 'static_pages#home'
   
@@ -15,5 +16,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
