@@ -8,8 +8,11 @@ class MealPlansController < ApplicationController
   def create
     logger.debug("Hitting MealPlans#create")
     @meal_plan = MealPlan.new(meal_plan_params)
+    logger.debug(@meal_plan.name)
     if @meal_plan.save
       
+    else
+
     end
   end
 

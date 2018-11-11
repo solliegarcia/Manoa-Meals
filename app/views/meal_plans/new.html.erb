@@ -10,7 +10,7 @@
   <div class="col-md-4 jumbotron">
     <h1>Nutrition</h1>
     <div class="nutr-calories">
-      <span id="nutr-odo" class="odometer">0</span>
+      <span id="nutr-calories" class="odometer">0</span>
       <span class="nutr-label">Calories</span>
     </div>
     <div class="nutr-fat">
@@ -21,7 +21,6 @@
       <span id="nutr-odo" class="odometer">0</span>
       <span class="nutr-label">Carbs</span>
     </div>
-
   </div>
 </div>
 <div class="row">
@@ -30,17 +29,59 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
 
+      <%= f.label :date %>
+      <%= f.date_field :date %>
+
+      <div class="chosen-dishes">
+        <h3>Chosen Dishes</h3>
+        <div class="dishes"></div>
+      </div>
+
+      <%= f.hidden_field :list_of_dishes %>
+
       <%= f.submit "Submit", class: "btn btn-primary" %>
 
 
     <% end %>
   </div>
+  <div class="col-md-4 jumbotron">
+    <h2>Available Dishes</h2>
+    <div class="available-dishes">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Calories</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @dishes.each do |dish| %>
+            <tr>
+              <th scope="row" id="<%= dish.id %>"><%= dish.name %></th>
+              <td id="calories<%= dish.id %>"><%= dish.calories %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>  
 
 
 <script>
-  console.log("Test");
-  $("#btn").on('click', function() {
-    $("nutr-odo").text("10");
+  var calories = 0;
+  var fats = 0;
+  var carbs = 0;
+  var list_of_dishes;
+
+  $(document).ready(function() {
+    $("div.available-dishes table tr").on('click', function() {
+      console.log($(this));
+      $(".dishes").append($(this));
+      calories += parseInt($(this).text().replace(/[^\d]/g, ''), 10);
+      $('#nutr-calories').text(calories)
+    });
   });
+
+
 </script>
