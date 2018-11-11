@@ -1,1 +1,73 @@
-<h1>Username</h2><%= @user.username %>, <%= @user.email_address %>
+<div>
+	<h3 style="text-align:left;">User Info</h3>
+	<p>Name: <%= @user.first_name %> <%= @user.last_name%></p>
+	Email: <%= @user.email_address %>
+</div>
+
+<div>
+	<h3 style="text-align:left;">Meal Plans</h3>
+</div>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Calories</th>
+  </tr>
+  <tr>
+    <td>Brunch</td>
+    <td>Sunday eggs</td>
+    <td>11/18</td>
+    <td>760</td>
+  </tr>
+  <tr>
+    <td>Dinner</td>
+    <td>Track prep.</td>
+    <td>11/19</td>
+    <td>550</td>
+  </tr>
+  <tr>
+    <td>Lunch</td>
+    <td>Drown in shoyu</td>
+    <td>11/20</td>
+    <td>680</td>
+  </tr>
+  <tr>
+    <td>Dinner</td>
+    <td>Vegetable day</td>
+    <td>11/20</td>
+    <td>350</td>
+  </tr>
+  <tr>
+    <td>Brunch</td>
+    <td>Cheat Day</td>
+    <td>11/21</td>
+    <td>800</td>
+  </tr>
+  <tr>
+    <td>Dinner</td>
+    <td>sushi</td>
+    <td>11/21</td>
+    <td>1200</td>
+  </tr>
+</table>
