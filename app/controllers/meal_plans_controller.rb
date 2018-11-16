@@ -19,6 +19,13 @@ class MealPlansController < ApplicationController
   def edit
   end
 
+  def custom
+    respond_to do |format|
+    format.html {}
+    format.js
+  end
+  end
+
   private
 
     def meal_plan_params

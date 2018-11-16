@@ -62,7 +62,10 @@
           <% end %>
         </tbody>
       </table>
-      <%= link_to "Custom", new_user_path, class: "btn btn-primary" %>
+      <%#= link_to "Custom", new_user_path, class: "btn btn-primary" %>
+      <%= render "partials/custom" %>
+      <%= link_to "Custom", "meal_plans_custom_path", remote: true%>
+
     </div>
   </div>
 </div>  
@@ -83,5 +86,6 @@
     });
   });
 
+  $('#content').html("<%= escape_javascript(render :partial => 'partials/custom')
 
 </script>
