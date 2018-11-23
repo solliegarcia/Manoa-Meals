@@ -1,0 +1,29 @@
+<% if nutrition.nil? %>
+  <div class="nutr-calories">
+      <span id="nutr-calories" class="odometer">0</span>
+      <span class="nutr-label">Calories</span>
+    </div>
+    <div class="nutr-fat">
+      <span id="nutr-fat" class="odometer">0</span>
+      <span class="nutr-label">Total Fat</span>
+    </div>
+    <div class="nutr-carbs">
+      <span id="nutr-carbs" class="odometer">0</span>
+      <span class="nutr-label">Carbs</span>
+    </div>
+  </div>
+<% else %>
+  <div class="nutr-calories">
+      <span id="nutr-calories" class="odometer"><%= nutrition[:calories] %></span>
+      <span class="nutr-label">Calories</span>
+    </div>
+    <div class="nutr-fat">
+      <span id="nutr-fat" class="odometer">0</span>
+      <span class="nutr-label">Total Fat</span>
+    </div>
+    <div class="nutr-carbs">
+      <span id="nutr-carbs" class="odometer">0</span>
+      <span class="nutr-label">Carbs</span>
+    </div>
+  </div>
+  <% end %>

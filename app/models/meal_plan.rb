@@ -5,4 +5,6 @@ class MealPlan < ApplicationRecord
 
   serialize :list_of_dishes
 
+  accepts_nested_attributes_for :dishes
+
 end

@@ -1,0 +1,2 @@
+$(".dishes").html("<%= escape_javascript(render partial: 'dish_list', locals: { chosen_dishes: @chosen_dishes } ) %> ");
+$(".nutrition_info").html("<%= escape_javascript(render partial: "nutrition", locals: { nutrition: @nutrition } ) %> ");

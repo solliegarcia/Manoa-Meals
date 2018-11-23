@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'meal_plans/show'
   get 'sessions/new'
   root 'static_pages#home'
-  
+  get 'meal_plans/new/update_dish_list', to: 'meal_plans#update_dish_list', as: 'update_dish_list'  
   get '/home', to: 'static_pages#home'
   get '/about', to: 'static_pages#about'
   get '/signup', to: 'users#new', as: 'new_user'
