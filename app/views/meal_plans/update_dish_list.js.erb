@@ -1,2 +1,4 @@
 $(".dishes").html("<%= escape_javascript(render partial: 'dish_list', locals: { chosen_dishes: @chosen_dishes } ) %> ");
-$(".nutrition_info").html("<%= escape_javascript(render partial: "nutrition", locals: { nutrition: @nutrition } ) %> ");
+$('#nutr-calories').html(<%= @nutrition['calories'] %>);
+$('#nutr-fat').html(<%= @nutrition['fat'] %>);
+$('#nutr-calories').html(<%= @nutrition['calories'] %>);

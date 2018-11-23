@@ -1,26 +1,39 @@
 <div class="jumbotron">
-  <h1>New Meal Plan</h1>
-</div>
-<div class="row"> 
-  <div class="col-md-6 jumbotron">
-    <h1>Restrictions</h1>
-    <p>Work in Progress</p>
-
-  </div>
-  <div class="col-md-6 jumbotron">
-    <h1>Nutrition</h1>
-    <div class="nutrition_info">
-      <%= render partial: "nutrition", locals: { nutrition: @nutrition } %>
-    </div>
-</div>
-<div class="row"> <!-- User Meal Plan -->
-  <div class="col-md-6 jumbotron">
-    <%= form_for(@meal_plan, url: meal_plans_create_path) do |f| %>
+  <h2>New Meal Plan</h2>
+  <%= form_for(@meal_plan, url: meal_plans_create_path) do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
 
       <%= f.label :date %>
       <%= f.date_field :date %>
+</div>
+<div class="row"> 
+  <div class="col-md-6 jumbotron">
+    <h2>Restrictions</h2>
+    <p>Work in Progress</p>
+
+  </div>
+  <div class="col-md-6 jumbotron">
+    <h2>Nutrition</h2>
+    <div class="row">
+      <%#= render partial: "nutrition", locals: { nutrition: @nutrition } %>
+      <div class="col-md-2">
+        <span id="nutr-calories" class="odometer">0</span><br>
+        <span class="nutr-label">Calories</span>
+      </div>
+      <div class="col-md-2">
+        <span id="nutr-fat" class="odometer">0</span><br>
+        <span class="nutr-label">Fat</span>
+      </div>
+      <div class="col-md-2">
+        <span id="nutr-carbs" class="odometer">0</span><br>
+        <span class="nutr-label">Carbs</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row"> <!-- User Meal Plan -->
+  <div class="col-md-6 jumbotron">
 
       <div class="chosen-dishes">
         <h2>Chosen Dishes</h3>
@@ -38,7 +51,7 @@
   <div class="col-md-6 jumbotron">
     <h2>Available Dishes</h2>
     <div class="available-dishes">
-      <table class="table">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -68,13 +81,21 @@
 
   $(document).ready(function() {
 
+    window.odometerOptions = {
+      auto: false,
+      format: '(,ddd)',
+      duration: 500,
+      theme: 'minimal',
+      animation: 'count'
+    }
+
 
     $("div.available-dishes table tr").on('click', function() {
       // On click, add ID to array, save into global variable. Add Button at bottom of available dishes to submit
       if (list_of_dishes.indexOf($(this).children(".dish_name").attr("id")) === -1 ) {
         list_of_dishes.push($(this).children(".dish_name").attr('id'));
       }
-      $(this).children().css('background-color', 'red');
+      $(this).addClass('success');
     });
 
     $('#add_dishes_btn').on('click', function() {
@@ -88,7 +109,7 @@
       });
       $('#list_of_dishes').val(list_of_dishes);
       event.preventDefault();
-      $('div.available-dishes table tr').children().css('background-color', "");
+      $('div.available-dishes table tr').removeClass('success');
 
     });
   });
