@@ -1,0 +1,21 @@
+<h2>Available Dishes</h2>
+  <% if available_dishes.nil? %>
+    <p>Please Select a Location</p>
+  <% else %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Calories</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% available_dishes.each do |dish| %>
+            <tr>
+              <th scope="row" class="dish_name" id="<%= dish.id %>"><%= dish.name %></th>
+              <td id="calories<%= dish.id %>"><%= dish.calories %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  <% end %>

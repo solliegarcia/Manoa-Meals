@@ -3,7 +3,7 @@ class MealPlansController < ApplicationController
   def new
     @meal_plan = MealPlan.new
     @user = current_user
-    @dishes = Dish.all # will be by weekly once week is implemented
+    @available_dishes = nil # will be by weekly once week is implemented
     @chosen_dishes = nil
   end
 
@@ -33,8 +33,15 @@ class MealPlansController < ApplicationController
     logger.debug @nutrition
 
     respond_to do |format|
-      format.js { flash[:success] = "Reloaded targets!"}
+      format.js { flash[:success] = "Added Dishes"}
     end
+  end
+
+  def change_location
+    logger.debug "Hitting change_location"
+    logger.debug params[:location]
+    @available_dishes = Dish.where(location: params[:location])
+
   end
 
   def edit

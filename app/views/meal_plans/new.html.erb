@@ -1,11 +1,17 @@
 <div class="jumbotron">
   <h2>New Meal Plan</h2>
-  <%= form_for(@meal_plan, url: meal_plans_create_path) do |f| %>
+  <%= form_for(@meal_plan, url: meal_plans_create_path, :html => {:user_id => current_user}) do |f| %>
+
       <%= f.label :name %>
       <%= f.text_field :name %>
 
       <%= f.label :date %>
       <%= f.date_field :date %>
+
+      <%= f.label :location %>
+      <%= select_tag(:location, 
+          options_for_select([['Gateway Cafe', 'gateway'], ['Hale Aloha Cafe','hale aloha']]),
+          id: 'location_id', prompt: 'Choose Location') %>
 </div>
 <div class="row"> 
   <div class="col-md-6 jumbotron">
@@ -65,25 +71,9 @@
     <% end %>
   </div>
   <div class="col-md-6 jumbotron">
-    <h2>Available Dishes</h2>
-    <div class="available-dishes">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Calories</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @dishes.each do |dish| %>
-            <tr>
-              <th scope="row" class="dish_name" id="<%= dish.id %>"><%= dish.name %></th>
-              <td id="calories<%= dish.id %>"><%= dish.calories %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= link_to 'Add to Meal Plan', '#', class: 'btn btn-primary', id: "add_dishes_btn" %>
+    <div class="available_dishes">
+      <%= render partial: 'available_dishes', locals: { available_dishes: @available_dishes } %>
+      <%= link_to 'Add to Meal Plan', '#', class: 'btn btn-primary', id: "add_dishes_btn" %> 
     </div>
   </div>
 </div>  
@@ -94,6 +84,17 @@
   var fats = 0;
   var carbs = 0;
   var list_of_dishes = [];
+  
+  function refresh_dish_list() {
+    $.ajax({
+      url: '/meal_plans/new/change_location',
+      type: 'POST',
+      dataType: 'script',
+      data: {
+        location: $('#location_id').val()
+      }
+    });
+  }
 
   $(document).ready(function() {
 
@@ -104,6 +105,8 @@
       theme: 'minimal',
       animation: 'count'
     }
+
+    $("#location_id").on('change', refresh_dish_list);
 
 
     $("div.available-dishes table tr").on('click', function() {
@@ -128,6 +131,7 @@
       $('div.available-dishes table tr').removeClass('success');
 
     });
+
   });
 
 
