@@ -1,4 +1,8 @@
 $(".dishes").html("<%= escape_javascript(render partial: 'dish_list', locals: { chosen_dishes: @chosen_dishes } ) %> ");
 $('#nutr-calories').html(<%= @nutrition['calories'] %>);
 $('#nutr-fat').html(<%= @nutrition['fat'] %>);
-$('#nutr-calories').html(<%= @nutrition['calories'] %>);
+$('#nutr-carbs').html(<%= @nutrition['carbs'] %>);
+$('#nutr-cholesterol').html(<%= @nutrition['cholesterol'] %>);
+$('#nutr-sodium').html(<%= @nutrition['sodium'] %>);
+$('#nutr-sugar').html(<%= @nutrition['suger'] %>);
+$('#nutr-protein').html(<%= @nutrition['protein'] %>);

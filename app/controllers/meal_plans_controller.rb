@@ -25,6 +25,9 @@ class MealPlansController < ApplicationController
                     'fat'         => @chosen_dishes.map{ |dish| dish.total_fat }.reduce(:+),
                     'cholesterol' => @chosen_dishes.map{ |dish| dish.cholesterol }.reduce(:+), 
                     'sodium'      => @chosen_dishes.map{ |dish| dish.sodium }.reduce(:+),
+                    'carbs'       => @chosen_dishes.map{ |dish| dish.carbs }.reduce(:+),
+                    'suger'       => @chosen_dishes.map{ |dish| dish.suger }.reduce(:+),
+                    'protein'     => @chosen_dishes.map{ |dish| dish.protein }.reduce(:+),
                   }
 
     logger.debug @nutrition
@@ -40,6 +43,6 @@ class MealPlansController < ApplicationController
   private
 
     def meal_plan_params
-      params.require(:meal_plan).permit(:id, :list_of_dishes, :name, dish_attributes: [:id, :calories, :name])
+      params.require(:meal_plan).permit(:id, :list_of_dishes, :name,)
     end
 end
