@@ -18,6 +18,7 @@ class MealPlansController < ApplicationController
     end
   end
 
+
   def update_dish_list
     @chosen_dishes = Dish.where(id: params[:data_value])
 
@@ -45,6 +46,12 @@ class MealPlansController < ApplicationController
   end
 
   def edit
+  end
+
+  def custom_dish
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

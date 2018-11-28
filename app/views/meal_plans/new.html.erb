@@ -113,8 +113,13 @@
 
 
 
+<<<<<<< HEAD
     $(document).on('click', 'tr.table_row', function() {
       console.log("Hit")
+=======
+
+    $("div.available-dishes table tr").on('click', function() {
+>>>>>>> manual-add-dishes-partial-testing
       // On click, add ID to array, save into global variable. Add Button at bottom of available dishes to submit
       if (list_of_dishes.indexOf($(this).children(".dish_name").attr("id")) === -1 ) {
         list_of_dishes.push($(this).children(".dish_name").attr('id'));
