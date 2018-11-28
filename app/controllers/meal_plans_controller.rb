@@ -11,17 +11,20 @@ class MealPlansController < ApplicationController
     logger.debug("Hitting MealPlans#create")
     @meal_plan = MealPlan.new(meal_plan_params)
     logger.debug(@meal_plan.name)
-    if @meal_plan.save
-      redirect_to @meal_plan
-    else
-      logger.debug "Having trouble saving..."
-      render "new"
-    end
+    respond_to do |format|
+      if @meal_plan.save
+        format.html { redirect_to meal_plan_url(@meal_plan), notice: "Meal Plan successfully saved." }
+      else
+        logger.debug "Having trouble saving..."
+        render "new"
+      end
+    end 
     logger.debug @meal_plan.errors.full_messages
   end
 
   def show
-    @meal_plan = MealPlan.find_by_id(current_user.id)
+    @meal_plan = MealPlan.find(params[:id])
+    
   end
 
   def update_dish_list
