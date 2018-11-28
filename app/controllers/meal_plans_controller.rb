@@ -12,9 +12,9 @@ class MealPlansController < ApplicationController
     @meal_plan = MealPlan.new(meal_plan_params)
     logger.debug(@meal_plan.name)
     if @meal_plan.save
-      
+      redirect_to @meal_plan
     else
-
+      render "new"
     end
   end
 
@@ -37,7 +37,7 @@ class MealPlansController < ApplicationController
     end
   end
 
-  def change_location
+  def refresh_dish_list
     logger.debug "Hitting change_location"
     logger.debug params[:location]
     @available_dishes = Dish.where(location: params[:location])
@@ -50,6 +50,6 @@ class MealPlansController < ApplicationController
   private
 
     def meal_plan_params
-      params.require(:meal_plan).permit(:id, :list_of_dishes, :name,)
+      params.require(:meal_plan).permit(:id, :list_of_dishes, :name, :course, :location)
     end
 end

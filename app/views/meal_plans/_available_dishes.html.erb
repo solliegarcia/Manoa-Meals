@@ -11,7 +11,7 @@
         </thead>
         <tbody>
           <% available_dishes.each do |dish| %>
-            <tr>
+            <tr class="table_row">
               <th scope="row" class="dish_name" id="<%= dish.id %>"><%= dish.name %></th>
               <td id="calories<%= dish.id %>"><%= dish.calories %></td>
             </tr>

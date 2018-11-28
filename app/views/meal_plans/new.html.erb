@@ -12,6 +12,10 @@
       <%= select_tag(:location, 
           options_for_select([['Gateway Cafe', 'gateway'], ['Hale Aloha Cafe','hale aloha']]),
           id: 'location_id', prompt: 'Choose Location') %>
+
+      <%= f.label :course %>
+      <%= select_tag(:course,
+            options_for_select( [ ['Breakfast', 'breakfast'], ['Lunch', 'lunch'], ['Dinner', 'dinner'] ] ), id: 'course_id' ) %>
 </div>
 <div class="row"> 
   <div class="col-md-6 jumbotron">
@@ -73,8 +77,8 @@
   <div class="col-md-6 jumbotron">
     <div class="available_dishes">
       <%= render partial: 'available_dishes', locals: { available_dishes: @available_dishes } %>
-      <%= link_to 'Add to Meal Plan', '#', class: 'btn btn-primary', id: "add_dishes_btn" %> 
     </div>
+      <%= link_to 'Add to Meal Plan', '#', class: 'btn btn-primary', id: "add_dishes_btn" %> 
   </div>
 </div>  
 
@@ -87,11 +91,12 @@
   
   function refresh_dish_list() {
     $.ajax({
-      url: '/meal_plans/new/change_location',
+      url: '/meal_plans/new/refresh_dish_list',
       type: 'POST',
       dataType: 'script',
       data: {
-        location: $('#location_id').val()
+        location: $('#location_id').val(),
+        course: $('#course_id').val()
       }
     });
   }
@@ -106,10 +111,10 @@
       animation: 'count'
     }
 
-    $("#location_id").on('change', refresh_dish_list);
 
 
-    $("div.available-dishes table tr").on('click', function() {
+    $(document).on('click', 'tr.table_row', function() {
+      console.log("Hit")
       // On click, add ID to array, save into global variable. Add Button at bottom of available dishes to submit
       if (list_of_dishes.indexOf($(this).children(".dish_name").attr("id")) === -1 ) {
         list_of_dishes.push($(this).children(".dish_name").attr('id'));
@@ -128,9 +133,12 @@
       });
       $('#list_of_dishes').val(list_of_dishes);
       event.preventDefault();
-      $('div.available-dishes table tr').removeClass('success');
+      $('tr.table_row').removeClass('success');
 
     });
+
+    $("#location_id").on('change', refresh_dish_list);
+    $("#course_id").on('change', refresh_dish_list);
 
   });
 
