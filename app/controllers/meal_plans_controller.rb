@@ -14,8 +14,14 @@ class MealPlansController < ApplicationController
     if @meal_plan.save
       redirect_to @meal_plan
     else
+      logger.debug "Having trouble saving..."
       render "new"
     end
+    logger.debug @meal_plan.errors.full_messages
+  end
+
+  def show
+    @meal_plan = MealPlan.find_by_id(current_user.id)
   end
 
   def update_dish_list
@@ -39,8 +45,18 @@ class MealPlansController < ApplicationController
 
   def refresh_dish_list
     logger.debug "Hitting change_location"
-    logger.debug params[:location]
-    @available_dishes = Dish.where(location: params[:location])
+    # Yo this is really ugly someone make this better
+    if params[:location] && params[:course].blank?
+      logger.debug "Location"
+      @available_dishes = Dish.where(location: params[:location])
+    elsif params[:course] && params[:location].blank?
+      logger.debug "Course"
+      @available_dishes = Dish.where(location: params[:course])
+    elsif params[:location] && params[:course]
+      logger.debug "Location and Course"
+      @available_dishes = Dish.where(location: params[:location], course: params[:course])
+    end
+
 
   end
 
@@ -50,6 +66,6 @@ class MealPlansController < ApplicationController
   private
 
     def meal_plan_params
-      params.require(:meal_plan).permit(:id, :list_of_dishes, :name, :course, :location)
+      params.require(:meal_plan).permit(:id, :user_id, :list_of_dishes, :name, :course, :location, :date)
     end
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'meal_plans/new'
   post 'meal_plans/create'
   get 'meal_plans/edit'
-  get 'meal_plans/show'
+  get 'meal_plans/:id/show', to: 'meal_plans#show', as: 'meal_plan'
   get 'sessions/new'
   root 'static_pages#home'
   get 'meal_plans/new/update_dish_list', to: 'meal_plans#update_dish_list', as: 'update_dish_list'  
