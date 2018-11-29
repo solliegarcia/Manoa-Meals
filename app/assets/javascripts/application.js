@@ -16,5 +16,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require odometer.min.js
 //= require_tree .
 

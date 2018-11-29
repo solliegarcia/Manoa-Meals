@@ -1,0 +1,30 @@
+<% if chosen_dishes.nil? %>
+  <p>Empty</p>
+<% else %> 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Calories</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Remove?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% chosen_dishes.each do |dish| %>
+      <tr>
+        <th scope="row" class="dish_name" id="<%= dish.id %>"><%= dish.name %></th>
+        <td id="calories<%= dish.id %>"><%= dish.calories %></td>
+        <td id="quantity">
+          <select id="quantity_select">
+            <option selected>1</option>
+            <option>2</option>
+            <option>3</option>  
+          </select>
+        </td>
+        <td id="remove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
