@@ -82,7 +82,11 @@
     <div class="available_dishes">
       <%= render partial: 'available_dishes', locals: { available_dishes: @available_dishes } %>
     </div>
-      <%= link_to 'Add to Meal Plan', '#', class: 'btn btn-primary', id: "add_dishes_btn" %> 
+      <%= link_to 'Add to Meal Plan', '#', class: 'btn btn-primary', id: "add_dishes_btn" %>
+      <%= link_to 'Add Custom Dish', custom_dish_path, :remote => true, class: 'btn btn-primary' %>
+        <div id="custom_id">
+
+  		</div>
   </div>
 </div>  
 
