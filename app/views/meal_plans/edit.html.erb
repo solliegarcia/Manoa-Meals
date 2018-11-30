@@ -1,2 +1,156 @@
-<h1>MealPlans#edit</h1>
-<p>Find me in app/views/meal_plans/edit.html.erb</p>
+<div class="jumbotron">
+  <h2>New Meal Plan</h2>
+  <%= form_for(@meal_plan, url: meal_plans_create_path) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+
+      <%= f.label :date %>
+      <%= f.date_field :date %>
+
+      <%= f.label :location %>
+      <%= select_tag(:location, 
+          options_for_select([['Gateway Cafe', 'gateway'], ['Hale Aloha Cafe','hale aloha']]),
+          id: 'location_id', prompt: 'Choose Location') %>
+
+      <%= f.label :course %>
+      <%= select_tag(:course,
+            options_for_select( [ ['Breakfast', 'breakfast'], ['Lunch', 'lunch'], ['Dinner', 'dinner'] ] ), 
+            id: 'course_id', prompt: "Choose Course" ) %>
+
+      <%= f.hidden_field :nutrition, class: 'nutrition_field' %>
+      <%= @nutrition.inspect %>
+</div>
+<div class="row"> 
+  <div class="col-md-6 jumbotron">
+    <h2>Restrictions</h2>
+    <p>Work in Progress</p>
+
+  </div>
+  <div class="col-md-6 jumbotron">
+    <h2>Nutrition</h2>
+    <div class="row">
+      <%#= render partial: "nutrition", locals: { nutrition: @nutrition } %>
+      <div class="col-md-2">
+        <span id="nutr-calories" class="odometer">0</span><br>
+        <span class="nutr-label">Calories</span>
+      </div>
+      <div class="col-md-2">
+        <span id="nutr-fat" class="odometer">0</span><br>
+        <span class="nutr-label">Fat</span>
+      </div>
+      <div class="col-md-2">
+        <span id="nutr-carbs" class="odometer">0</span><br>
+        <span class="nutr-label">Carbs</span>
+      </div>
+      <div class="col-md-2">
+        <span id="nutr-cholesterol" class="odometer">0</span><br>
+        <span class="nutr-label">Cholesterol</span>
+      </div>
+      <div class="col-md-2">
+        <span id="nutr-sodium" class="odometer">0</span><br>
+        <span class="nutr-label">Sodium</span>
+      </div>
+      <div class="col-md-2">
+        <span id="nutr-sugar" class="odometer">0</span><br>
+        <span class="nutr-label">Sugar</span>
+      </div>
+      <div class="col-md-2">
+        <span id="nutr-protein" class="odometer">0</span><br>
+        <span class="nutr-label">Protein</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row"> <!-- User Meal Plan -->
+  <div class="col-md-6 jumbotron">
+
+      <div class="chosen-dishes">
+        <h2>Chosen Dishes</h3>
+        <div class="dishes">
+          <%= render partial: "dish_list", locals: { chosen_dishes: @chosen_dishes } %>
+        </div>
+      </div>
+
+      <%= f.hidden_field :list_of_dishes, id: 'list_of_dishes' %>
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+  <div class="col-md-6 jumbotron">
+    <div class="available_dishes">
+      <%= render partial: 'available_dishes', locals: { available_dishes: @available_dishes } %>
+    </div>
+      <%= link_to 'Add to Meal Plan', '#', class: 'btn btn-primary', id: "add_dishes_btn" %>
+      <%= link_to 'Add Custom Dish', custom_dish_path, :remote => true, class: 'btn btn-primary' %>
+        <div id="custom_id">
+
+      </div>
+  </div>
+</div>  
+
+
+<script>
+  var calories = 0;
+  var fats = 0;
+  var carbs = 0;
+  var list_of_dishes = [];
+  
+  function refresh_dish_list() {
+    $.ajax({
+      url: '/meal_plans/new/refresh_dish_list',
+      type: 'POST',
+      dataType: 'script',
+      data: {
+        location: $('#location_id').val(),
+        course: $('#course_id').val()
+      }
+    });
+  }
+
+  $(document).ready(function() {
+
+    window.odometerOptions = {
+      auto: false,
+      format: '(,ddd)',
+      duration: 500,
+      theme: 'minimal',
+      animation: 'count'
+    }
+
+
+
+    $(document).on('click', 'tr.table_row', function() {
+      console.log("Hit")
+      // On click, add ID to array, save into global variable. Add Button at bottom of available dishes to submit
+      if (list_of_dishes.indexOf($(this).children(".dish_name").attr("id")) === -1 ) {
+        list_of_dishes.push($(this).children(".dish_name").attr('id'));
+      }
+      $(this).addClass('success');
+    });
+
+    $('#add_dishes_btn').on('click', function() {
+      $.ajax({
+        url: '/meal_plans/new/update_dish_list',
+        type: 'GET',
+        dataType: 'script',
+        data: {
+          data_value: list_of_dishes
+        }
+      });
+      $('#list_of_dishes').val(list_of_dishes);
+      event.preventDefault();
+      $('tr.table_row').removeClass('success');
+
+    });
+
+    $("#location_id").on('change', refresh_dish_list);
+    $("#course_id").on('change', refresh_dish_list);
+
+  });
+
+
+</script>

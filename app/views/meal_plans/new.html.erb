@@ -20,6 +20,9 @@
       <%= select_tag(:course,
             options_for_select( [ ['Breakfast', 'breakfast'], ['Lunch', 'lunch'], ['Dinner', 'dinner'] ] ), 
             id: 'course_id', prompt: "Choose Course" ) %>
+
+      <%= f.hidden_field :nutrition, class: 'nutrition_field' %>
+      <%= @nutrition.inspect %>
 </div>
 <div class="row"> 
   <div class="col-md-6 jumbotron">
