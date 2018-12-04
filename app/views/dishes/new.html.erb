@@ -1,2 +1,72 @@
 <h1>Dishes#new</h1>
 <p>Find me in app/views/dishes/new.html.erb</p>
+
+<div class='panel-body'>
+            <%= form_for(@dish) do |f| %>
+            
+            <div class='form-group'>
+                <%= f.label :created_at %>
+                <%= f.text_field :created_at, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :updated_at %>
+                <%= f.text_field :updated_at, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :name %>
+                <%= f.text_field :name, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :calories %>
+                <%= f.text_field :calories, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :total_fat %>
+                <%= f.text_field :total_fat, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :cholesterol %>
+                <%= f.text_field :cholesterol, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :sodium %>
+                <%= f.text_field :sodium, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :carbs %>
+                <%= f.text_field :carbs, class: 'form-control' %>
+            </div>
+				
+			<div class='form-group'>
+                <%= f.label :suger %>
+                <%= f.text_field :suger, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :protein %>
+                <%= f.text_field :protein, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :location %>
+                <%= f.text_field :location, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+                <%= f.label :course %>
+                <%= f.text_field :course, class: 'form-control' %>
+            </div>
+
+            
+
+              <%= f.submit "Make my meal", class: "btn" %>
+            <% end %>
+          </div>
+      </div>
