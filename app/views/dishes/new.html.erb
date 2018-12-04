@@ -1,5 +1,5 @@
-<h1>Dishes#new</h1>
-<p>Find me in app/views/dishes/new.html.erb</p>
+<h1>My Custom Dish Maker </h1>
+<p>Fill in blanks below to continue</p>
 
 <div class='panel-body'>
             <%= form_for(@dish) do |f| %>
@@ -23,37 +23,37 @@
             </div>
 
             <div class='form-group'>
-                <%= f.label :calories %>
+                <%= f.label :'calories' %>
                 <%= f.text_field :calories, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :total_fat %>
+                <%= f.label :'total_Fat (g)' %>
                 <%= f.text_field :total_fat, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :cholesterol %>
+                <%= f.label :'cholesterol (mg)' %>
                 <%= f.text_field :cholesterol, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :sodium %>
+                <%= f.label :'sodium_(mg)' %>
                 <%= f.text_field :sodium, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :carbs %>
+                <%= f.label :'carbs_(g)' %>
                 <%= f.text_field :carbs, class: 'form-control' %>
             </div>
 				
 			<div class='form-group'>
-                <%= f.label :suger %>
+                <%= f.label :'suger_(g)' %>
                 <%= f.text_field :suger, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :protein %>
+                <%= f.label :'protein_(g)' %>
                 <%= f.text_field :protein, class: 'form-control' %>
             </div>
 
@@ -72,7 +72,7 @@
 
             
 
-              <%= f.submit "Make my meal", class: "btn" %>
+              <%= f.submit "Make my dish", class: "btn" %>
               <%#= f.submit "Make my meal", class: "btn" %>
               <%#= link_to 'Test', dishes_new_path, class:'btn pull-right' %>
 
