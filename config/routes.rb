@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
   get 'meal_plans/new'
+  post 'dishes/new', to: 'dishes#new', as: 'new_dish'
   post 'meal_plans/create'
   get 'meal_plans/edit'
   get 'sessions/new'
   root 'static_pages#home'
   get 'meal_plans/new/update_dish_list', to: 'meal_plans#update_dish_list', as: 'update_dish_list'
-  get 'meal_plans/new/custom_dish', to: 'meal_plans#custom_dish', as: 'custom_dish' 
+  # get 'meal_plans/new/custom_dish', to: 'meal_plans#custom_dish', as: 'custom_dish' 
   post 'meal_plans/new/refresh_dish_list', to: 'meal_plans#refresh_dish_list', as: 'refresh_dish_list'
   get '/home', to: 'static_pages#home'
   get '/about', to: 'static_pages#about'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get "dishes/new_custom_dish", to: 'dishes#new_custom_dish', as: 'new_custom_dish'
 
   resources :users
   resources :meal_plans
