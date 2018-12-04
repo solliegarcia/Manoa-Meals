@@ -20,7 +20,7 @@ class DishesController < ApplicationController
 private
 
 	def dish_params
-      #params.require(:dish).permit(:created_at, :updated_at, :name, :calories, :total_fat, :cholesterol, :sodium, :carbs, :suger, :protein, :location, :course)
+      params.require(:dish).permit(:created_at, :updated_at, :name, :calories, :total_fat, :cholesterol, :sodium, :carbs, :suger, :protein, :location, :course)
     end
 
 end
