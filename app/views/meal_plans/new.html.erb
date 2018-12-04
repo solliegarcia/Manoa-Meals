@@ -1,99 +1,122 @@
-
 <%= @meal_plan.errors.full_messages.first if @meal_plan.errors.any? %>
-<div class="jumbotron">
-  <h2>New Meal Plan</h2>
-  <%= form_for(@meal_plan, url: meal_plans_create_path) do |f| %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-
-      <%= f.label :date %>
-      <%= f.date_field :date %>
-
-      <%= f.label :location %>
-      <%= select_tag(:location, 
-          options_for_select([['Gateway Cafe', 'gateway'], ['Hale Aloha Cafe','hale aloha']]),
-          id: 'location_id', prompt: 'Choose Location') %>
-
-      <%= f.label :course %>
-      <%= select_tag(:course,
-            options_for_select( [ ['Breakfast', 'breakfast'], ['Lunch', 'lunch'], ['Dinner', 'dinner'] ] ), 
-            id: 'course_id', prompt: "Choose Course" ) %>
-
-      <%= f.hidden_field :nutrition, class: 'nutrition_field' %>
-      <%= @nutrition.inspect %>
-</div>
-<div class="row"> 
-  <div class="col-md-6 jumbotron" id="mid-row">
-    <h2>Restrictions</h2>
-    <p>Work in Progress</p>
-
-  </div>
-  <div class="col-md-6 jumbotron" id=mid-row>
-    <h2>Nutrition</h2>
+<div class="container">
+  <div class="panel panel-default">
     <div class="row">
-      <%#= render partial: "nutrition", locals: { nutrition: @nutrition } %>
-      <div class="col-md-2">
+      <div class="col-md-6">
+        <div class="section-header">
+          <div class="panel-header">
+            <span class="section-header__title h2">New Meal Plan</span>
+            <!-- <h2>New Meal Plan</h2> -->
+          </div>
+        </div>
+        <div class="panel-body">
+          <%= form_for(@meal_plan, url: meal_plans_create_path) do |f| %>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, class: 'form-control' %></p>
+                </div>
+              </div>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :date %>
+                  <%= f.date_field :date, class: 'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :location %>
+                  <%= select_tag(:location, 
+                      options_for_select([['Gateway Cafe', 'gateway'], ['Hale Aloha Cafe','hale aloha']]),
+                      id: 'location_id', class: 'form-control', prompt: 'Choose Location') %>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                 <%= f.label :course %>
+                  <%= select_tag(:course,
+                      options_for_select( [ ['Breakfast', 'breakfast'], ['Lunch', 'lunch'], ['Dinner', 'dinner'] ] ), 
+                      id: 'course_id', class: 'form-control', prompt: "Choose Course" ) %>
+                </div>
+                <%= f.hidden_field :nutrition, class: 'nutrition_field' %>
+                <%= f.submit "Submit", class: "btn btn-primary pull-right" %>
+              </div>
+            </div>
+        </div>
+      </div> <!-- col-md-6 -->
+      <div class="col-md-6">
+        <div class='section-header'>
+          <span class="section-header__title h2">Restrictions</span>
+        </div>
+        <h2 class="text-center">Work in Progress<h2>
+      </div>
+    </div> <!-- row -->
+  </div> <!-- panel panel-default -->
+  <div class="panel panel-default nutrition">
+    <div class="row">
+      <div class="section-header">
+        <span class="section-header__title h2">Nutrition</span>
+      </div>
+      <div class="col-md-2 nutrition-values">
         <span id="nutr-calories" class="odometer">0</span><br>
         <span class="nutr-label">Calories</span>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 nutrition-values">
         <span id="nutr-fat" class="odometer">0</span><br>
         <span class="nutr-label">Fat</span>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 nutrition-values">
         <span id="nutr-carbs" class="odometer">0</span><br>
         <span class="nutr-label">Carbs</span>
       </div>
-      <div class="col-md-2">
-        <span id="nutr-cholesterol" class="odometer">0</span><br>
-        <span class="nutr-label">Cholesterol</span>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-2 nutrition-values">
         <span id="nutr-sodium" class="odometer">0</span><br>
         <span class="nutr-label">Sodium</span>
       </div>
-      <div class="col-md-2">
+
+      <div class="col-md-2 nutrition-values">
         <span id="nutr-sugar" class="odometer">0</span><br>
         <span class="nutr-label">Sugar</span>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 nutrition-values">
         <span id="nutr-protein" class="odometer">0</span><br>
         <span class="nutr-label">Protein</span>
       </div>
     </div>
   </div>
-</div>
-<div class="row"> <!-- User Meal Plan -->
-  <div class="col-md-6 jumbotron">
-
-      <div class="chosen-dishes">
-        <h2>Chosen Dishes</h3>
+  <div class="panel panel-default bottom-panel">
+    <div class='row'>
+      <div class="col-md-6">
+        <div class='section-header'>
+          <span class='section-header__title h2'>Chosen Dishes</span>
+        </div>
         <div class="dishes">
           <%= render partial: "dish_list", locals: { chosen_dishes: @chosen_dishes } %>
         </div>
+        <%= f.hidden_field :list_of_dishes, id: 'list_of_dishes' %>
+        
+        <% end %>
+        
       </div>
-
-      <%= f.hidden_field :list_of_dishes, id: 'list_of_dishes' %>
-
-      <%= f.submit "Submit", class: "btn btn-primary" %>
-
-    <% end %>
-  </div>
-  <div class="col-md-6 jumbotron">
-    <div class="available_dishes">
-      <%= render partial: 'available_dishes', locals: { available_dishes: @available_dishes } %>
+      <div class='col-md-6'>
+        <div class="chosen-dishes">
+          <div class='section-header'>
+            <span class='section-header__title h2'>Available Dishes</span>
+          </div>
+          <div class="available_dishes">
+            <%= render partial: 'available_dishes', locals: { available_dishes: @available_dishes } %>
+          </div>
+          <%= link_to 'Add to Meal Plan', '#', class: 'btn btn-primary add-meal-plan pull-right', id: "add_dishes_btn" %>
+          <%= link_to 'Add Custom Dish', custom_dish_path, :remote => true, class: 'btn btn-primary pull-right add-custom-dish' %>
+        </div>
     </div>
-      <%= link_to 'Add to Meal Plan', '#', class: 'btn btn-primary', id: "add_dishes_btn" %>
-      <%= link_to 'Add Custom Dish', custom_dish_path, :remote => true, class: 'btn btn-primary' %>
-        <div id="custom_id">
-
-  		</div>
   </div>
-</div>  
-
+</div> <!-- container -->
 
 <script>
   var calories = 0;
