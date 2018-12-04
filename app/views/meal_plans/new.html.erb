@@ -7,7 +7,7 @@
         <div class="section-header">
           <div class="panel-header">
             <span class="section-header__title h2">New Meal Plan</span>
-            <!-- <h2>New Meal Plan</h2> -->
+            <!-- <h2 class="section-header__title">New Meal Plan</h2> -->
           </div>
         </div>
         <div class="panel-body">
@@ -31,17 +31,13 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <%= f.label :location %>
-                  <%= select_tag(:location, 
-                      options_for_select([['Gateway Cafe', 'gateway'], ['Hale Aloha Cafe','hale aloha']]),
-                      id: 'location_id', class: 'form-control', prompt: 'Choose Location') %>
+                  <%= f.select(:location, options_for_select([['Gateway Cafe', 'gateway'], ['Hale Aloha Cafe','hale aloha']]), { prompt: 'Choose Location' }, { :class => 'form-control', :id => 'location_id'} ) %>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                  <%= f.label :course %>
-                  <%= select_tag(:course,
-                      options_for_select( [ ['Breakfast', 'breakfast'], ['Lunch', 'lunch'], ['Dinner', 'dinner'] ] ), 
-                      id: 'course_id', class: 'form-control', prompt: "Choose Course" ) %>
+                 <%= f.select(:course, options_for_select([ ['Breakfast', 'breakfast'], ['Lunch', 'lunch'], ['Dinner', 'dinner'], ['Custom', 'custom'] ]), {prompt: 'Choose Course'}, {class: 'form-control', id: 'course_id'}) %>
                 </div>
                 <%= f.hidden_field :nutrition, class: 'nutrition_field' %>
                 <%= f.submit "Submit", class: "btn pull-right" %>
