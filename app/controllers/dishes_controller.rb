@@ -4,7 +4,7 @@ class DishesController < ApplicationController
     if @dish.save
       #log_in(@user)
       flash[:success] = "Welcome to Custom Meal Maker"
-      #redirect_to user_path(@user)
+      redirect_to meal_plans_new_path
     else
       flash.now[:danger] = "Error creating account"
       #render 'new'
