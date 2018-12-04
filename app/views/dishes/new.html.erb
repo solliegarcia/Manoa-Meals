@@ -1,12 +1,96 @@
-<h1>Dishes#new</h1>
-<p>Find me in app/views/dishes/new.html.erb</p>
+<div class='container'>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <h1>New Custom Dish</h1>
 
-<div class='panel-body'>
-            <%= form_for(@dish) do |f| %>
+        <div class="panel-body">
+          <%= form_for(@dish) do |f| %>
+            <div class="row">
+              <div class='col-md-6'>
+                <div class="form-group">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, class: 'form-control' %>
+                </div>
+              </div>
+              <div class='col-md-6'>
+                <div class="form-group">
+                  <%= f.label :calories %>
+                  <%= f.text_field :calories, class: 'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-md-4'>
+                <div class='form-group'>
+                  <%= f.label :carbs %>
+                  <%= f.text_field :carbs, class: 'form-control' %>
+                </div>
+              </div>
+              <div class='col-md-4'>
+                <div class='form-group'>
+                  <%= f.label :protein %>
+                  <%= f.text_field :protein, class: 'form-control' %>
+                </div>
+              </div>
+              <div class='col-md-4'>
+                <div class='form-group'>
+                  <%= f.label :total_fat %>
+                  <%= f.text_field :total_fat, class: 'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class='show-more'>
+              <div class='row'>
+                <div class='col-md-4'>
+                  <div class='form-group'>
+                    <%= f.label :cholesterol %>
+                    <%= f.text_field :cholesterol, class: 'form-control' %>
+                  </div>
+                </div>
+                <div class='col-md-4'>
+                  <div class='form-group'>
+                    <%= f.label :sodium %>
+                    <%= f.text_field :sodium, class: 'form-control' %>
+                  </div>
+                </div>
+                <div class='col-md-4'>
+                  <div class='form-group'>
+                    <%= f.label :suger %>
+                    <%= f.text_field :suger, class: 'form-control' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="" id='show-more' style="text-align:center;">Show More</a>
+            <div class="hidden_fields">
+              <%= f.hidden_field :course, class: 'form-control', value: 'custom' %>
+
+            </div>
+            <%= f.submit "Create Dish", class: 'btn' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $(".show-more").hide();
+
+    $("#show-more").on('click', function() {
+      $('.show-more').show();
+      event.preventDefault();
+    })
+  })
+</script>
+
+<!-- <div class='panel-body'>
+            <%#= form_for(@dish) do |f| %>
             
             <div class='form-group'>
                 <%#= f.label :created_at %>
-                <%= f.hidden_field :created_at, class: 'form-control' %>
+                <%#= f.hidden_field :created_at, class: 'form-control' %>
             </div>
 
 
@@ -14,52 +98,52 @@
 
             <div class='form-group'>
                 <%#= f.label :updated_at %>
-                <%= f.hidden_field :updated_at, class: 'form-control' %>
+                <%#= f.hidden_field :updated_at, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :name %>
-                <%= f.text_field :name, class: 'form-control' %>
+                <%#= f.label :name %>
+                <%#= f.text_field :name, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :calories %>
-                <%= f.text_field :calories, class: 'form-control' %>
+                <%#= f.label :calories %>
+                <%#= f.text_field :calories, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :total_fat %>
-                <%= f.text_field :total_fat, class: 'form-control' %>
+                <%#= f.label :total_fat %>
+                <%#= f.text_field :total_fat, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :cholesterol %>
-                <%= f.text_field :cholesterol, class: 'form-control' %>
+                <%#= f.label :cholesterol %>
+                <%#= f.text_field :cholesterol, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :sodium %>
-                <%= f.text_field :sodium, class: 'form-control' %>
+                <%#= f.label :sodium %>
+                <%#= f.text_field :sodium, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :carbs %>
-                <%= f.text_field :carbs, class: 'form-control' %>
+                <%#= f.label :carbs %>
+                <%#= f.text_field :carbs, class: 'form-control' %>
             </div>
 				
 			<div class='form-group'>
-                <%= f.label :suger %>
-                <%= f.text_field :suger, class: 'form-control' %>
+                <%#= f.label :suger %>
+                <%#= f.text_field :suger, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
-                <%= f.label :protein %>
-                <%= f.text_field :protein, class: 'form-control' %>
+                <%#= f.label :protein %>
+                <%#= f.text_field :protein, class: 'form-control' %>
             </div>
 
             <div class='form-group'>
                 <%#= f.label :location %>
-                <%= f.hidden_field :location, class: 'form-control', :value => 'gateway' %>
+                <%#= f.hidden_field :location, class: 'form-control', :value => 'gateway' %>
             </div>
 
             <div class='form-group'>
@@ -72,10 +156,10 @@
 
             
 
-              <%= f.submit "Make my meal", class: "btn" %>
+              <%#= f.submit "Make my meal", class: "btn" %>
               <%#= f.submit "Make my meal", class: "btn" %>
               <%#= link_to 'Test', dishes_new_path, class:'btn pull-right' %>
 
-            <% end %>
+            <%# end %>
           </div>
-      </div>
+      </div> -->

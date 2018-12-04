@@ -1,7 +1,8 @@
 <div class="col-md-6 panel">
   <p class="h2"><%= @meal_plan.name.capitalize %></p>
   <p class="text-left">Date: <%= @meal_plan.date.strftime("%m/%d/%Y")  %></p>
-  <p class="text-left">Location: <%= @meal_plan.location %></p>
+  <p class="text-left">Location: <%= @meal_plan.location.capitalize %></p>
+  <p class="text-left">Course: <%= @meal_plan.course.capitalize %></p>
 </div>
 
 <div class="col-md-6 panel">

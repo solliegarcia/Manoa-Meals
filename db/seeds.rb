@@ -17,6 +17,7 @@ csv.each do |row|
   d.suger = row[' SUGAR']
   d.protein = row[' PROTEIN']
   d.location = row[' LOCATION']
+  d.course = row[' COURSE']
 
 
   if Dish.find_by(name: d.name).nil?
