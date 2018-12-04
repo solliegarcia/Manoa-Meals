@@ -2,24 +2,113 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+@font-face {
+    font-family: 'Poiret One';
+    src: url('<%= asset_path("PoiretOne-Regular.ttf") %>') format('truetype');
+}
+
+@font-face {
+    font-family: 'Josefin Slab';
+    src: url('<%= asset_path("JosefinSlab-Regular.ttf") %>') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('<%= asset_path("Raleway-Regular.ttf") %>') format('truetype');
+}
+
+@font-face {
+    font-family: 'Fredericka the Great';
+}
+
+@font-face {
+    font-family: 'Nanum';
+    src: url('<%= asset_path("NanumGothic.ttf") %>') format('truetype');
+
+}
+
+/* universal */
+
 body {
+
     background-color: white;
     background-image: url("backg.jpeg");
     background-position: center;
     background-repeat: no-repeat;
 }
 
+/* typography */
 
 h1 {
     color: black;
     text-align: center;
 }
 
-h2 { color: black; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0 0 24px; }
+h2 { 
+    color: black; 
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 48px;
+    margin: 0 0 24px; 
+}
 
-h3 { color: #685206; font-family: 'Helvetica Neue', sans-serif; font-size: 20px; line-height: 24px; margin: 0 0 24px; text-align: justify; text-justify: inter-word; text-align: center; }
+h3 { 
+    color: #685206;
+    font-size: 20px; 
+    line-height: 24px;
+    margin: 0 0 24px; 
+    text-align: center; 
+}
 
-p { color: black; font-family: 'Raleway',sans-serif; font-size: 18px; font-weight: 500; line-height: 32px; margin: 0 0 24px; text-align: center; }
+p { 
+    font-family: 'Raleway', sans-serif;
+    color: black; 
+    font-size: 19px; font-weight: 500;
+    line-height: 32px;
+    margin: 0 0 24px;
+    text-align: center; 
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+p2 {
+    font-family: 'Raleway', sans-serif;
+    color: black; 
+    font-size: 22px; font-weight: 500; 
+    line-height: 32px;
+    margin: 0 0 24px; 
+    text-align: center; 
+    
+}
+
+
+/* text shadow */
+
+.shadow {
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+.with-four { 
+    text-shadow:
+        0.07em 0 black,
+        0 0.07em black,
+        -0.07em 0 black,
+        0 -0.07em black;
+}
+
+.with-eight {
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+
+/* images */
 
 .img-circle {
     display: block;
@@ -53,6 +142,13 @@ p { color: black; font-family: 'Raleway',sans-serif; font-size: 18px; font-weigh
     margin: 0 auto;
 }
 
+.image-size {
+    display: block;
+    max-width: 300px;
+    max-height: 200px;
+    margin: 0 auto;
+}
+
 /* Hero image (for future use) */
 .hero-image {
     
@@ -74,7 +170,5 @@ p { color: black; font-family: 'Raleway',sans-serif; font-size: 18px; font-weigh
     transform: translate(-50%, -50%);
     color: white;
 }
-
-
 
 
