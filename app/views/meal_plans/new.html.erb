@@ -112,9 +112,8 @@
             <%= render partial: 'available_dishes', locals: { available_dishes: @available_dishes } %>
           </div>
           <%= link_to 'Add to Meal Plan', '#', class: 'btn add-meal-plan pull-right', id: "add_dishes_btn" %>
-          <%= link_to 'Add Custom Dish', dishes_new_path, class:'btn pull-right' %>
+          <%= link_to 'Add Custom Dish', custom_dish_path, :remote => true, class: 'btn pull-right add-custom-dish' %>
         </div>
-
     </div>
   </div>
 </div> <!-- container -->
@@ -178,6 +177,5 @@
 
   });
 
-  $('#content').html("<%= escape_javascript(render :partial => 'partials/custom')
 
 </script>
