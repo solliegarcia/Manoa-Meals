@@ -10,6 +10,16 @@
 	<div class='container'>
 		<div class='row panel panel-default'>
 			<div class = "col-md-12">
+
+				<% if logged_in? %>
+
+				<h1>Manoa Meal Planner</h1>
+				<p>Plan out your daily meals using the Manoa Meal Planner!</p>  
+				<%= image_tag('cook.jpeg', class: "center2")%>
+				<p>Generate your personal meals based on set nutrition goals and calorie limit. </p>
+
+				<p>Manoa Meal Planner supports integration with on-campus café menu.</p>
+				<% else %>
 				<h1>Manoa Meal Planner</h1>
 				<p>Plan out your daily meals using the Manoa Meal Planner!</p>  
 				<%= image_tag('cook.jpeg', class: "center2")%>
@@ -17,6 +27,10 @@
 				<%= link_to "Sign Up", new_user_path, class: "button" %>
 
 				<p>Manoa Meal Planner supports integration with on-campus café menu.</p>
+
+				<% end %>
+
+
 			</div>
 		</div>
 	</div>
