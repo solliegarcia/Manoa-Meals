@@ -63,7 +63,7 @@ class MealPlansController < ApplicationController
       @available_dishes = Dish.where(location: params[:location])
     elsif params[:course] && params[:location].blank?
       logger.debug "Course"
-      @available_dishes = Dish.where(location: params[:course])
+      @available_dishes = Dish.where(course: params[:course])
     elsif params[:location] && params[:course]
       logger.debug "Location and Course"
       @available_dishes = Dish.where(location: params[:location], course: params[:course])

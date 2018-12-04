@@ -1,63 +1,82 @@
-<div class="col-md-6 panel">
-  <p class="h2"><%= @meal_plan.name.capitalize %></p>
-  <p class="text-left">Date: <%= @meal_plan.date.strftime("%m/%d/%Y")  %></p>
-  <p class="text-left">Location: <%= @meal_plan.location.capitalize %></p>
-  <p class="text-left">Course: <%= @meal_plan.course.capitalize %></p>
-</div>
-
-<div class="col-md-6 panel">
-  <p class="h2">Nutrition</p>
-  <div class="row">
-      <%#= render partial: "nutrition", locals: { nutrition: @nutrition } %>
-      <div class="col-md-2 nutrition-values">
-        <span id="nutr-calories" class="odometer"><%= @nutrition['calories'] %></span><br>
-        <span class="nutr-label">Calories</span>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="section-header">
+          <div class="panel-header">
+            <span class="section-header__title h2">New Meal Plan</span>
+            <!-- <h2 class="section-header__title">New Meal Plan</h2> -->
+          </div>
+        </div>
+        <div class="panel-body">
+          <p class="text-left">Date: <%= @meal_plan.date.strftime("%m/%d/%Y")  %></p>
+          <p class="text-left">Location: <%= @meal_plan.location.capitalize %></p>
+          <p class="text-left">Course: <%= @meal_plan.course.capitalize %></p>
+        </div>
       </div>
-      <div class="col-md-2 nutrition-values">
-        <span id="nutr-fat" class="odometer"><%= @nutrition['fat'] %></span><br>
-        <span class="nutr-label">Fat</span>
-      </div>
-      <div class="col-md-2 nutrition-values">
-        <span id="nutr-carbs" class="odometer"><%= @nutrition['carbs'] %></span><br>
-        <span class="nutr-label">Carbs</span>
-      </div>
-      <div class="col-md-2 nutrition-values">
-        <span id="nutr-sodium" class="odometer"><%= @nutrition['sodium'] %></span><br>
-        <span class="nutr-label">Sodium</span>
-      </div>
-      <div class="col-md-2 nutrition-values">
-        <span id="nutr-sugar" class="odometer"><%= @nutrition['sugar'] %></span><br>
-        <span class="nutr-label">Sugar</span>
-      </div>
-      <div class="col-md-2 nutrition-values">
-        <span id="nutr-protein" class="odometer"><%= @nutrition['protein'] %></span><br>
-        <span class="nutr-label">Protein</span>
+      <div class='col-md-6'>
+        <div class='section-header'>
+          <span class="section-header__title h2">Nutrition</span>
+        </div>
+        <div class='panel-body'>
+          <div class="col-md-2 nutrition-values">
+            <span id="nutr-calories" class="odometer"><%= @nutrition['calories'] %></span><br>
+            <span class="nutr-label">Calories</span>
+          </div>
+          <div class="col-md-2 nutrition-values">
+            <span id="nutr-fat" class="odometer"><%= @nutrition['fat'] %></span><br>
+            <span class="nutr-label">Fat</span>
+          </div>
+          <div class="col-md-2 nutrition-values">
+            <span id="nutr-carbs" class="odometer"><%= @nutrition['carbs'] %></span><br>
+            <span class="nutr-label">Carbs</span>
+          </div>
+          <div class="col-md-2 nutrition-values">
+            <span id="nutr-sodium" class="odometer"><%= @nutrition['sodium'] %></span><br>
+            <span class="nutr-label">Sodium</span>
+          </div>
+          <div class="col-md-2 nutrition-values">
+            <span id="nutr-sugar" class="odometer"><%= @nutrition['sugar'] %></span><br>
+            <span class="nutr-label">Sugar</span>
+          </div>
+          <div class="col-md-2 nutrition-values">
+            <span id="nutr-protein" class="odometer"><%= @nutrition['protein'] %></span><br>
+            <span class="nutr-label">Protein</span>
+          </div>
+        </div>
       </div>
     </div>
-</div>
-
-<div class="col-md-12 panel">
-
-  <p class="h1">Dishes</p>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Dish Name</th>
-        <th scope="col">Calories</th>
-        <th scope="col">Quantity</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @chosen_dishes.each_with_index do |dish, index| %>
-        <tr>
-          <th scope="row"><%= index +1 %></th>
-          <td><%= dish.name %></td>
-          <td><%= dish.calories %></td>
-          <td>1</td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to 'Edit', edit_meal_plan_path(@meal_plan), class: 'btn pull-right' %>
+  </div>
+  <div class='panel panel-default'>
+    <div class='row'>
+      <div class="col-md-12">
+        <div class="section-header">
+          <div class="panel-header">
+            <span class="section-header__title h2">Dishes</span>
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Dish Name</th>
+              <th scope="col">Calories</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @chosen_dishes.each_with_index do |dish, index| %>
+              <tr>
+                <th scope="row"><%= index +1 %></th>
+                <td><%= dish.name %></td>
+                <td><%= dish.calories %></td>
+                <td>1</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to 'Edit', edit_meal_plan_path(@meal_plan), class: 'btn pull-right' %>
+      </div>
+    </div>
+  </div>
 </div>
