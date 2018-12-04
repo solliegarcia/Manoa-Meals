@@ -24,7 +24,15 @@ class MealPlansController < ApplicationController
 
   def show
     @meal_plan = MealPlan.find(params[:id])
-    
+    @chosen_dishes = Dish.where(id: @meal_plan.list_of_dishes.split(','))
+    @nutrition = {  'calories'    => @chosen_dishes.map{ |dish| dish.calories }.reduce(:+),
+                    'fat'         => @chosen_dishes.map{ |dish| dish.total_fat }.reduce(:+),
+                    'cholesterol' => @chosen_dishes.map{ |dish| dish.cholesterol }.reduce(:+), 
+                    'sodium'      => @chosen_dishes.map{ |dish| dish.sodium }.reduce(:+),
+                    'carbs'       => @chosen_dishes.map{ |dish| dish.carbs }.reduce(:+),
+                    'suger'       => @chosen_dishes.map{ |dish| dish.suger }.reduce(:+),
+                    'protein'     => @chosen_dishes.map{ |dish| dish.protein }.reduce(:+),  
+                  }
   end
 
   def update_dish_list
@@ -38,6 +46,7 @@ class MealPlansController < ApplicationController
                     'suger'       => @chosen_dishes.map{ |dish| dish.suger }.reduce(:+),
                     'protein'     => @chosen_dishes.map{ |dish| dish.protein }.reduce(:+),
                   }
+
 
     logger.debug @nutrition
 
@@ -64,6 +73,8 @@ class MealPlansController < ApplicationController
   end
 
   def edit
+    logger.debug "Meal Plan #{params[:id]}"
+    @meal_plan = MealPlan.find(params[:id])
   end
 
   private
